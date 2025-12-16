@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
 
-from models import db
+from models import (db, Customer, Item, Review, CustomerSchema, ItemSchema, ReviewSchema,)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
