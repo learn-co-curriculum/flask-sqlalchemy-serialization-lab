@@ -5,10 +5,12 @@ from models import db, Customer, Review, Item
 
 with app.app_context():
 
+    # Clear existing rows so running this script again creates the same sample data.
     Customer.query.delete()
     Review.query.delete()
     Item.query.delete()
 
+    # Add sample customers and items before creating reviews that refer to them.
     customer1 = Customer(name='Tal Yuri')
     customer2 = Customer(name='Raha Rosario')
     customer3 = Customer(name='Luca Mahan')
@@ -21,6 +23,7 @@ with app.app_context():
     db.session.add_all([item1, item2, item3])
     db.session.commit()
 
+    # Each review links one customer to one item and stores their comment.
     db.session.add(Review(comment="zipper broke the first week",
                    customer=customer1, item=item1))
     db.session.add(Review(comment="love this backpack!",
